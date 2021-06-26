@@ -1,12 +1,13 @@
 import React, { Fragment, useEffect, useState } from 'react'
+import EditTodo from './EditTodo'
 
-const Listodos = () => {
+const ListTodos = () => {
   const [todos, setTodos] = useState([])
 
   // delete function
   const deleteTodo = async (id) => {
     try {
-      const deleteTodo = await fetch(`http://localhost:5000/todos/${id}`, {
+      await fetch(`http://localhost:5000/todos/${id}`, {
         method: "DELETE"
       })
 
@@ -32,10 +33,9 @@ const Listodos = () => {
     getTodos()
   },[])
 
-  console.log(todos)
   return (
     <Fragment>
-        <table class="table mt-5 text-center">
+        <table className="table mt-5 text-center">
           <thead>
             <tr>
               <th>Description</th>
@@ -47,7 +47,7 @@ const Listodos = () => {
             {todos.map(todo => (
               <tr key={todo.todo_id}>
                 <td>{todo.description}</td>
-                <td>Edit</td>
+                <td><EditTodo todo={todo}/></td>
                 <td>
                   <button className='btn btn-danger' onClick={() => deleteTodo(todo.todo_id)}>Delete</button>
                 </td>
@@ -59,4 +59,4 @@ const Listodos = () => {
   )
 }
 
-export default Listodos
+export default ListTodos

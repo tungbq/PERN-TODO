@@ -2,3 +2,4 @@
 
 2. What is app.use(express.json()) means?
 
+3. Avoid hardcoding in reactjs, find away to store our Backend API server (http://localhost:5000)
