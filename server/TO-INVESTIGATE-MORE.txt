@@ -1,0 +1,4 @@
+1. What is CORS?
+
+2. What is app.use(express.json()) means?
+
