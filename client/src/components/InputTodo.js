@@ -10,6 +10,10 @@ const InputTodo = () => {
     try {
       const body = { description }
       
+      if (!description) {
+        return alert('You must provide the content!')
+      }
+
       await fetch("http://localhost:5000/todos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -30,6 +34,7 @@ const InputTodo = () => {
           type="text"
           className='form-control'
           value={description}
+          placeholder='Input task description...'
           onChange={e => setDescription(e.target.value)}
         />
         <button className='btn btn-success'>Add</button>
