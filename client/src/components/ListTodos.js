@@ -6,14 +6,16 @@ const ListTodos = () => {
 
   // delete function
   const deleteTodo = async (id) => {
-    try {
-      await fetch(`http://localhost:5000/todos/${id}`, {
-        method: "DELETE"
-      })
+    if (window.confirm("Do you sure to detele?")) {
+      try {
+        await fetch(`http://localhost:5000/todos/${id}`, {
+          method: "DELETE"
+        })
 
-      setTodos(todos.filter(todo => todo.todo_id !== id))
-    } catch (error) {
-      console.error(error.message)
+        setTodos(todos.filter(todo => todo.todo_id !== id))
+      } catch (error) {
+        console.error(error.message)
+      }
     }
   }
 
